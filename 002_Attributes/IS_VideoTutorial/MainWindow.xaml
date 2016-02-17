@@ -1,0 +1,64 @@
+﻿<Window x:Class="IS_VideoTutorial.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:IS_VideoTutorial"
+        mc:Ignorable="d"
+        Title="Video Tutorial">
+    
+    <Grid Name="mainGrid">
+        <StackPanel>
+            <Label Style="{StaticResource titleStyle}">Employees</Label>
+
+            <Grid HorizontalAlignment="Left">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Style="{StaticResource labelStyle}"
+                       Grid.Row="0"
+                       Grid.Column="0">Name:</Label>
+
+                <TextBox Style="{StaticResource textBoxStyle}"
+                         Text="{Binding EmployeeName}"
+                         Grid.Row="0"
+                         Grid.Column="1"/>
+
+                <Label Style="{StaticResource labelStyle}"
+                       Grid.Row="1"
+                       Grid.Column="0">Birth Date:</Label>
+
+                <DatePicker SelectedDate="{Binding SelectedBirthDate}"
+                            VerticalAlignment="Center"
+                            Width="150"
+                            Grid.Row="1"
+                             Grid.Column="1"/>
+
+                <Label Style="{StaticResource labelStyle}"
+                       Grid.Row="2"
+                       Grid.Column="0">Position:</Label>
+
+                <ComboBox Style="{StaticResource comboBoxStyle}"
+                          ItemsSource="{Binding PositionsCollection}"
+                          SelectedItem="{Binding SelectedPosition}"
+                          Grid.Row="2"
+                          Grid.Column="1"/>
+
+                <Button Style="{StaticResource buttonStyle}"
+                        Command="{Binding OKButtonCommand}"
+                        Grid.Row="2"
+                        Grid.Column="2">OK</Button>
+            </Grid>
+
+            <DataGrid Style="{StaticResource dataGridStyle}" 
+                      ItemsSource="{Binding EmployeeCollection}"/>
+        </StackPanel>
+    </Grid>
+</Window>
